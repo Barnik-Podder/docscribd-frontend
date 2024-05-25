@@ -1,0 +1,24 @@
+.container-signup{
+    display: flex;
+    flex-direction: row;
+    width: 50vw;
+    background-color: transparent;
+    border: none;
+
+}
+
+.doctor, .patient{
+    width: 50%;
+    text-align: center;
+}
+
+.doctor img{
+    width: 80%;
+    border: 2px solid var(--yellow);
+    border-radius: 2rem;
+}
+.patient img{
+    width: 80%;
+    border: 2px solid var(--yellow);
+    border-radius: 2rem;
+}

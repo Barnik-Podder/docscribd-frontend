@@ -1,18 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import './SignupPatient.css';
 
 export default function Signuppatient() {
     const [credentials, setCredentials] = useState({ name: "", email: "", password: "", dateOfBirth: "", gender: "" });
+    const [apiUrl, setApiUrl] = useState("");
+
+    useEffect(() => {
+        const url = process.env.REACT_APP_API_URL;
+        setApiUrl(url);
+        console.log(`API URL: ${url}`); // This should log the correct URL
+    }, []);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch("http://localhost:5000/api/signup_patient",`${process.env.MY_BACKEND}/api/signup_patient`, {
+        // const apiUrl = process.env.REACT_APP_API_URL;
+        console.log(apiUrl); 
+        const response = await fetch(`${apiUrl}/api/signup_patient`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password, dateOfBirth: credentials.dateOfBirth, gender: credentials.gender })
+            body: JSON.stringify(credentials)
         });
         const json = await response.json()
         console.log(json);

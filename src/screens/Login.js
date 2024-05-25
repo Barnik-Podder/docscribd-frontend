@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './Login.css';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
@@ -12,8 +12,8 @@ export default function Login() {
   const [apiUrl, setApiUrl] = useState("");
 
   useEffect(() => {
-      const url = process.env.REACT_APP_API_URL;
-      setApiUrl(url);
+    const url = process.env.REACT_APP_API_URL;
+    setApiUrl(url);
   }, []);
 
   const togglePassword = () => {
@@ -28,7 +28,7 @@ export default function Login() {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email: credentials.email, password: credentials.password })
+        body: JSON.stringify(credentials)
       });
       const json = await response.json();
 

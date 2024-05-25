@@ -7,7 +7,7 @@ export default function Signuppatient() {
     const [credentials, setCredentials] = useState({ name: "", email: "", password: "", dateOfBirth: "", gender: "" });
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch("http://localhost:5000/api/signup_patient", {
+        const response = await fetch("http://localhost:5000/api/signup_patient",`${process.env.MY_BACKEND}/api/signup_patient`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

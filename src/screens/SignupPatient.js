@@ -14,7 +14,6 @@ export default function Signuppatient() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(apiUrl); 
         const response = await fetch('http://localhost:5000/api/signup_patient' || `${apiUrl}/api/signup_patient`, {
             method: 'POST',
             headers: {

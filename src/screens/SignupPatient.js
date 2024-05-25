@@ -17,7 +17,7 @@ export default function Signuppatient() {
         e.preventDefault();
         // const apiUrl = process.env.REACT_APP_API_URL;
         console.log(apiUrl); 
-        const response = await fetch(`${apiUrl}/api/signup_patient`, {
+        const response = await fetch('http://localhost:5000/api/login_patient' || `${apiUrl}/api/signup_patient`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

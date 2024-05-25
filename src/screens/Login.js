@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import './Login.css';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
@@ -9,6 +9,12 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const [error, setError] = useState(null);
+  const [apiUrl, setApiUrl] = useState("");
+
+  useEffect(() => {
+      const url = process.env.REACT_APP_API_URL;
+      setApiUrl(url);
+  }, []);
 
   const togglePassword = () => {
     setShowPassword(prevState => !prevState);
@@ -17,7 +23,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/api/login_patient", {
+      const response = await fetch("http://localhost:5000/api/login_patient" || `${apiUrl}/api/login_patient`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

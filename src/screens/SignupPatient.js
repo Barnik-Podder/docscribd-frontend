@@ -10,12 +10,10 @@ export default function Signuppatient() {
     useEffect(() => {
         const url = process.env.REACT_APP_API_URL;
         setApiUrl(url);
-        console.log(`API URL: ${url}`); // This should log the correct URL
     }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // const apiUrl = process.env.REACT_APP_API_URL;
         console.log(apiUrl); 
         const response = await fetch('http://localhost:5000/api/login_patient' || `${apiUrl}/api/signup_patient`, {
             method: 'POST',
